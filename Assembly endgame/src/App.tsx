@@ -64,6 +64,7 @@ function App() {
                 <kbd className="keyboard__letter">Y</kbd>
                 <kbd className="keyboard__letter">Z</kbd>
             </div>
+            <button className="new-game">New Game</button>
         </main>
     );
 }

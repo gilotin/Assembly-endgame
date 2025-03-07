@@ -5,6 +5,7 @@
   --mrg-bottom: 2rem;
   --violet: #7a5ea7;
   --dark-grey: #323232;
+  --light-blue: #11b5e5;
 }
 
 body {
@@ -34,10 +35,11 @@ body {
 
 .game__progress {
   background-color: var(--violet);
-  padding: 1rem 2rem;
-  max-width: 80%;
+  padding: 1.2rem 2rem;
+  max-width: 75%;
   margin: auto;
   font-style: italic;
+  border: 1px dashed var(--dark-grey);
 }
 
 .game__attempt {
@@ -65,7 +67,7 @@ body {
   justify-content: center;
   margin-bottom: var(--mrg-bottom);
   gap: .15rem;
-  margin-bottom: 5rem;
+  margin-bottom: 3rem;
 }
 
 .board__letter {
@@ -102,4 +104,14 @@ body {
 
 .fail {
   background: var(--fail-red);
+}
+
+
+.new-game {
+  border: 1px solid white;
+  background: var(--light-blue);
+  border-radius: 4px;
+  padding: .6rem 6rem;
+  font-weight: 600;
+  font-size: 1.2rem;
 }
