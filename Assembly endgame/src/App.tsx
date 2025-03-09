@@ -1,4 +1,6 @@
 import "./App.css";
+import Keyboard from "./components/Keyboard";
+import generateLetters from "./utils/generate";
 
 function App() {
     return (
@@ -37,32 +39,7 @@ function App() {
             </div>
 
             <div className="game__keyboard">
-                <kbd className="keyboard__letter success">A</kbd>
-                <kbd className="keyboard__letter fail">B</kbd>
-                <kbd className="keyboard__letter">C</kbd>
-                <kbd className="keyboard__letter">D</kbd>
-                <kbd className="keyboard__letter">E</kbd>
-                <kbd className="keyboard__letter">F</kbd>
-                <kbd className="keyboard__letter">G</kbd>
-                <kbd className="keyboard__letter">H</kbd>
-                <kbd className="keyboard__letter">I</kbd>
-                <kbd className="keyboard__letter">J</kbd>
-                <kbd className="keyboard__letter">K</kbd>
-                <kbd className="keyboard__letter">L</kbd>
-                <kbd className="keyboard__letter">M</kbd>
-                <kbd className="keyboard__letter">N</kbd>
-                <kbd className="keyboard__letter">O</kbd>
-                <kbd className="keyboard__letter">P</kbd>
-                <kbd className="keyboard__letter">Q</kbd>
-                <kbd className="keyboard__letter">R</kbd>
-                <kbd className="keyboard__letter">S</kbd>
-                <kbd className="keyboard__letter">T</kbd>
-                <kbd className="keyboard__letter">U</kbd>
-                <kbd className="keyboard__letter">V</kbd>
-                <kbd className="keyboard__letter">W</kbd>
-                <kbd className="keyboard__letter">X</kbd>
-                <kbd className="keyboard__letter">Y</kbd>
-                <kbd className="keyboard__letter">Z</kbd>
+                <Keyboard keyboard={generateLetters()} />
             </div>
             <button className="new-game">New Game</button>
         </main>
