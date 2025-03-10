@@ -1,8 +1,17 @@
+import { useEffect, useState } from "react";
 import "./App.css";
 import Keyboard from "./components/Keyboard";
 import generateLetters from "./utils/generate";
+import MysticWord from "./components/MysticWord";
 
 function App() {
+    const [mysticWord, setMysticWork] = useState([]);
+    useEffect(() => {
+        fetch("https://random-word-api.vercel.app/api?words=1&length=8&type=uppercase")
+            .then((response) => response.json())
+            .then((data) => setMysticWork(data[0]));
+    }, []);
+
     return (
         <main className="game__assembly">
             <section className="game__introduction">
@@ -28,14 +37,7 @@ function App() {
             </div>
 
             <div className="game__board">
-                <div className="board__letter">T</div>
-                <div className="board__letter">E</div>
-                <div className="board__letter">S</div>
-                <div className="board__letter">T</div>
-                <div className="board__letter">W</div>
-                <div className="board__letter">O</div>
-                <div className="board__letter">R</div>
-                <div className="board__letter">D</div>
+                <MysticWord wordData={mysticWord} />
             </div>
 
             <div className="game__keyboard">

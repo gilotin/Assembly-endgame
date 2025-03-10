@@ -2,7 +2,7 @@ import { Key } from "../types/types";
 
 function generateLetters() {
     const keyboard: Key[] = "abcdefghijklmnopqrstuvwxyz".split("").map((letter, index) => ({
-        id: index + 1,
+        id: index,
         key: letter,
     }));
 

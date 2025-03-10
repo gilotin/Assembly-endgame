@@ -1,10 +1,20 @@
 import { KeyboardProps } from "../types/types";
 
 function Keyboard({ keyboard }: KeyboardProps) {
+    function onClickKey(e: React.MouseEvent<HTMLElement>) {
+        const keyID = e.currentTarget.id;
+        console.log(e.currentTarget);
+    }
+
     return (
         <>
             {keyboard.map((key) => (
-                <kbd key={key.id} id={key.key} className="keyboard__letter">
+                <kbd
+                    onClick={(e) => onClickKey(e)}
+                    key={key.id}
+                    id={key.id}
+                    className="keyboard__letter"
+                >
                     {key.key.toLocaleUpperCase()}
                 </kbd>
             ))}

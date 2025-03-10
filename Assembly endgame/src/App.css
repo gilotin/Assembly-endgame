@@ -71,6 +71,8 @@ body {
 }
 
 .board__letter {
+  width: 44px;
+  height: 44px;
   padding: .6rem 1rem;
   background: var(--dark-grey);
   border-bottom: 1px solid white;
