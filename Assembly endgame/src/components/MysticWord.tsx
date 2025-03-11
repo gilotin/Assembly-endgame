@@ -10,8 +10,8 @@ function mysticWord({ wordData }: MysticWordProps) {
     return (
         <>
             {placeholder.map((x, index) => (
-                <div key={index} className="board__letter hidden">
-                    {x}
+                <div key={index} className="board__letter">
+                    <span className="hidden">{x}</span>
                 </div>
             ))}
         </>

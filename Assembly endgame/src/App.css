@@ -78,6 +78,8 @@ body {
   border-bottom: 1px solid white;
 }
 
+
+
 /* keyboard layout */
 
 
@@ -117,4 +119,9 @@ body {
   font-weight: 600;
   font-size: 1.2rem;
   cursor: pointer;
+}
+
+
+.hidden {
+  display: none;
 }
