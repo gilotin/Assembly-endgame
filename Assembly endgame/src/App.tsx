@@ -4,6 +4,7 @@ import Keyboard from "./components/Keyboard";
 import generateLetters from "./utils/generate";
 import MysticWord from "./components/MysticWord";
 import { DataApi } from "./types/types";
+import createStructuredData from "./utils/createStructureData";
 
 function App() {
     const [mysticWord, setMysticWord] = useState<DataApi[]>([]);
@@ -17,14 +18,6 @@ function App() {
                 setMysticWord(structuredData);
             });
     }, []);
-
-    function createStructuredData(data: string) {
-        let result: DataApi[] = [];
-        for (let i = 0; i < data.length; i++) {
-            result.push({ id: data[i], value: data[i], isActive: false });
-        }
-        return result;
-    }
 
     return (
         <main className="game__assembly">
