@@ -3,14 +3,28 @@ import "./App.css";
 import Keyboard from "./components/Keyboard";
 import generateLetters from "./utils/generate";
 import MysticWord from "./components/MysticWord";
+import { DataApi } from "./types/types";
 
 function App() {
-    const [mysticWord, setMysticWork] = useState([]);
+    const [mysticWord, setMysticWord] = useState<DataApi[]>([]);
+
     useEffect(() => {
         fetch("https://random-word-api.vercel.app/api?words=1&length=8&type=uppercase")
             .then((response) => response.json())
-            .then((data) => setMysticWork(data[0]));
+            .then((data: string[]) => {
+                const word = data[0];
+                const structuredData = createStructuredData(word);
+                setMysticWord(structuredData);
+            });
     }, []);
+
+    function createStructuredData(data: string) {
+        let result: DataApi[] = [];
+        for (let i = 0; i < data.length; i++) {
+            result.push({ id: data[i], value: data[i], isActive: false });
+        }
+        return result;
+    }
 
     return (
         <main className="game__assembly">
