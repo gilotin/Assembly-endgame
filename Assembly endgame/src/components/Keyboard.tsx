@@ -15,7 +15,7 @@ function Keyboard({ keyboard }: KeyboardProps) {
                     id={key.id}
                     className="keyboard__letter"
                 >
-                    {key.key.toLocaleUpperCase()}
+                    {key.key}
                 </kbd>
             ))}
         </>
