@@ -3,11 +3,12 @@ import "./App.css";
 import Keyboard from "./components/Keyboard";
 import generateLetters from "./utils/generate";
 import MysticWord from "./components/MysticWord";
-import { DataApi } from "./types/types";
+import { DataApi, KeyState } from "./types/types";
 import createStructuredData from "./utils/createStructureData";
 
 function App() {
     const [mysticWord, setMysticWord] = useState<DataApi[]>([]);
+    const [keyState, setKeyState] = useState<KeyState[]>([]);
 
     useEffect(() => {
         fetch("https://random-word-api.vercel.app/api?words=1&length=8&type=uppercase")
@@ -48,7 +49,12 @@ function App() {
             </div>
 
             <div className="game__keyboard">
-                <Keyboard keyboard={generateLetters()} />
+                <Keyboard
+                    keyboard={generateLetters()}
+                    wordData={mysticWord}
+                    setMysticWord={setMysticWord}
+                    setKeyState={setKeyState}
+                />
             </div>
             <button className="new-game">New Game</button>
         </main>

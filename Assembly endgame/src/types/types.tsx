@@ -1,10 +1,13 @@
 export interface Key {
     id: string | undefined;
     key: string;
+    className: string;
 }
 
 export interface KeyboardProps {
     keyboard: Key[];
+    setMysticWord: React.Dispatch<React.SetStateAction<DataApi[]>>;
+    setKeyState: React.Dispatch<React.SetStateAction<KeyState[]>>;
 }
 
 export interface DataApi {
@@ -16,3 +19,10 @@ export interface DataApi {
 export interface MysticWordProps {
     wordData: DataApi[];
 }
+
+export interface KeyState {
+    id: string;
+    state: unknown;
+}
+
+export type PROPS = KeyboardProps & MysticWordProps;
