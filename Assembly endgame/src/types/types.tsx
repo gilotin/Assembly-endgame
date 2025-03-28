@@ -18,11 +18,12 @@ export interface DataApi {
 
 export interface MysticWordProps {
     wordData: DataApi[];
+    keyState?: KeyState[];
 }
 
 export interface KeyState {
     id: string;
-    state: unknown;
+    state: string;
 }
 
 export type PROPS = KeyboardProps & MysticWordProps;

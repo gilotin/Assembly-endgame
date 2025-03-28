@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import Keyboard from "./components/Keyboard";
-import generateLetters from "./utils/generate";
+import generateKeyboard from "./utils/generateKeyboard";
 import MysticWord from "./components/MysticWord";
 import { DataApi, KeyState } from "./types/types";
 import createStructuredData from "./utils/createStructureData";
@@ -9,6 +9,8 @@ import createStructuredData from "./utils/createStructureData";
 function App() {
     const [mysticWord, setMysticWord] = useState<DataApi[]>([]);
     const [keyState, setKeyState] = useState<KeyState[]>([]);
+
+    console.log(keyState);
 
     useEffect(() => {
         fetch("https://random-word-api.vercel.app/api?words=1&length=8&type=uppercase")
@@ -50,8 +52,9 @@ function App() {
 
             <div className="game__keyboard">
                 <Keyboard
-                    keyboard={generateLetters()}
+                    keyboard={generateKeyboard()}
                     wordData={mysticWord}
+                    keyState={keyState}
                     setMysticWord={setMysticWord}
                     setKeyState={setKeyState}
                 />

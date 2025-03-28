@@ -1,30 +1,38 @@
-import { DataApi, PROPS } from "../types/types";
+import { PROPS } from "../types/types";
 
-function Keyboard({ keyboard, setMysticWord, setKeyState }: PROPS) {
+function Keyboard({ keyboard, wordData, keyState, setMysticWord, setKeyState }: PROPS) {
     function onClickKey(e: React.MouseEvent<HTMLElement>) {
-        const pressedKey = e.currentTarget;
+        const pressedKey = e.currentTarget.id;
 
-        checkLetter(pressedKey);
-    }
+        if (keyState?.some((key) => key.id === pressedKey)) return;
 
-    function checkLetter(pressedKey: HTMLElement) {
-        setMysticWord((prevState) =>
-            prevState.map((letter) =>
-                letter.id === pressedKey.id ? { ...letter, isActive: true } : letter
+        setMysticWord((prevWordData) =>
+            prevWordData.map((letter) =>
+                letter.id === pressedKey ? { ...letter, isActive: true } : letter
             )
         );
+
+        setKeyState((prevState) => [
+            ...prevState,
+            {
+                id: pressedKey,
+                state: wordData.some((letter) => letter.id === pressedKey) ? "success" : "fail",
+            },
+        ]);
     }
 
     return (
         <>
-            {keyboard.map((key) => (
+            {keyboard.map((letter) => (
                 <kbd
                     onClick={(e) => onClickKey(e)}
-                    key={key.id}
-                    id={key.id ?? ""}
-                    className={key.className}
+                    key={letter.id}
+                    id={letter.id ?? ""}
+                    className={`keyboard__letter ${
+                        keyState?.find((key) => key.id === letter.id)?.state ?? ""
+                    }`}
                 >
-                    {key.key}
+                    {letter.key}
                 </kbd>
             ))}
         </>
