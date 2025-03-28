@@ -10,8 +10,6 @@ function App() {
     const [mysticWord, setMysticWord] = useState<DataApi[]>([]);
     const [keyState, setKeyState] = useState<KeyState[]>([]);
 
-    console.log(keyState);
-
     useEffect(() => {
         fetch("https://random-word-api.vercel.app/api?words=1&length=8&type=uppercase")
             .then((response) => response.json())
