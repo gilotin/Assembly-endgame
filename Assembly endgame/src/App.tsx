@@ -11,7 +11,7 @@ function App() {
     const [keyState, setKeyState] = useState<KeyState[]>([]);
 
     useEffect(() => {
-        fetch("https://random-word-api.vercel.app/api?words=1&length=8&type=uppercase")
+        fetch("https://random-word-api.vercel.app/api?words=1&length=6&type=uppercase")
             .then((response) => response.json())
             .then((data: string[]) => {
                 const word = data[0];
@@ -45,13 +45,13 @@ function App() {
             </div>
 
             <div className="game__board">
-                <MysticWord wordData={mysticWord} />
+                <MysticWord mysticWord={mysticWord} />
             </div>
 
             <div className="game__keyboard">
                 <Keyboard
                     keyboard={generateKeyboard()}
-                    wordData={mysticWord}
+                    mysticWord={mysticWord}
                     keyState={keyState}
                     setMysticWord={setMysticWord}
                     setKeyState={setKeyState}

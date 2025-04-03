@@ -1,6 +1,6 @@
 import { PROPS } from "../types/types";
 
-function Keyboard({ keyboard, wordData, keyState, setMysticWord, setKeyState }: PROPS) {
+function Keyboard({ keyboard, mysticWord, keyState, setMysticWord, setKeyState }: PROPS) {
     function onClickKey(e: React.MouseEvent<HTMLElement>) {
         const pressedKey = e.currentTarget.id;
 
@@ -16,7 +16,7 @@ function Keyboard({ keyboard, wordData, keyState, setMysticWord, setKeyState }: 
             ...prevState,
             {
                 id: pressedKey,
-                state: wordData.some((letter) => letter.id === pressedKey) ? "success" : "fail",
+                state: mysticWord.some((letter) => letter.id === pressedKey) ? "success" : "fail",
             },
         ]);
     }

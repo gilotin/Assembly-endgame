@@ -1,6 +1,6 @@
 import { MysticWordProps } from "../types/types";
 
-function mysticWord({ wordData }: MysticWordProps) {
+function mysticWord({ mysticWord: wordData }: MysticWordProps) {
     return (
         <>
             {wordData.map((item, index) => (

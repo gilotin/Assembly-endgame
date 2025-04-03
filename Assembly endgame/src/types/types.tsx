@@ -17,7 +17,7 @@ export interface DataApi {
 }
 
 export interface MysticWordProps {
-    wordData: DataApi[];
+    mysticWord: DataApi[];
     keyState?: KeyState[];
 }
 
