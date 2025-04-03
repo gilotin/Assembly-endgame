@@ -1,6 +1,13 @@
 import { PROPS } from "../types/types";
 
-function Keyboard({ keyboard, mysticWord, keyState, setMysticWord, setKeyState }: PROPS) {
+function Keyboard({
+    keyboard,
+    mysticWord,
+    keyState,
+    setMysticWord,
+    setTryCounter,
+    setKeyState,
+}: PROPS) {
     function onClickKey(e: React.MouseEvent<HTMLElement>) {
         const pressedKey = e.currentTarget.id;
 

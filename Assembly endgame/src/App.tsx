@@ -5,10 +5,12 @@ import generateKeyboard from "./utils/generateKeyboard";
 import MysticWord from "./components/MysticWord";
 import { DataApi, KeyState } from "./types/types";
 import createStructuredData from "./utils/createStructureData";
+import checkNumberOfTries from "./utils/checkNumberOfTries";
 
 function App() {
     const [mysticWord, setMysticWord] = useState<DataApi[]>([]);
     const [keyState, setKeyState] = useState<KeyState[]>([]);
+    const [tryCounter, setTryCounter] = useState<number>(0);
 
     useEffect(() => {
         fetch("https://random-word-api.vercel.app/api?words=1&length=6&type=uppercase")
@@ -19,6 +21,10 @@ function App() {
                 setMysticWord(structuredData);
             });
     }, []);
+
+    useEffect(() => {
+        setTryCounter(checkNumberOfTries(keyState));
+    }, [keyState]);
 
     return (
         <main className="game__assembly">
@@ -53,11 +59,12 @@ function App() {
                     keyboard={generateKeyboard()}
                     mysticWord={mysticWord}
                     keyState={keyState}
+                    setTryCounter={setTryCounter}
                     setMysticWord={setMysticWord}
                     setKeyState={setKeyState}
                 />
             </div>
-            <button className="new-game">New Game</button>
+            {tryCounter >= 6 ? <button className="new-game">New Game</button> : null}
         </main>
     );
 }
