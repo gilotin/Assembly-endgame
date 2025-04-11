@@ -8,7 +8,6 @@ export interface KeyboardProps {
     keyboard: Key[];
     setMysticWord: React.Dispatch<React.SetStateAction<DataApi[]>>;
     setKeyState: React.Dispatch<React.SetStateAction<KeyState[]>>;
-    tryCounter: number;
 }
 
 export interface DataApi {
@@ -27,4 +26,9 @@ export interface KeyState {
     state: string;
 }
 
-export type PROPS = KeyboardProps & MysticWordProps;
+export interface GameCondition {
+    winCondition?: number;
+    failCondition?: number;
+}
+
+export type PROPS = KeyboardProps & MysticWordProps & GameCondition;

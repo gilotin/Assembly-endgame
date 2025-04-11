@@ -3,16 +3,16 @@ import "./App.css";
 import Keyboard from "./components/Keyboard";
 import generateKeyboard from "./utils/generateKeyboard";
 import VisualizeWord from "./components/VisualizeWord";
-import { DataApi, KeyState } from "./types/types";
+import { DataApi, GameCondition, KeyState } from "./types/types";
 import createStructuredData from "./utils/createStructureData";
-import checkNumberOfTries from "./utils/checkNumberOfTries";
-import { gameText } from "./constants/gameText";
+import checkGameCondition from "./utils/checkGameCondition";
 import GameAttempt from "./components/GameAttempt";
+import ProgressBar from "./components/ProgressBar";
 
 function App() {
     const [mysticWord, setMysticWord] = useState<DataApi[]>([]);
     const [keyState, setKeyState] = useState<KeyState[]>([]);
-    const [tryCounter, setTryCounter] = useState<number>(0);
+    const [gameConditionState, setGameConditionState] = useState<GameCondition>({});
 
     useEffect(() => {
         fetch("https://random-word-api.vercel.app/api?words=1&length=6&type=uppercase")
@@ -25,7 +25,7 @@ function App() {
     }, []);
 
     useEffect(() => {
-        setTryCounter(checkNumberOfTries(keyState));
+        setGameConditionState(checkGameCondition(keyState));
     }, [keyState]);
 
     return (
@@ -36,11 +36,7 @@ function App() {
                     Guess the word inder 8 attempts to keep the programming world safe from Assembly
                 </p>
                 <article className="game__progress">
-                    <p className="progress__score">
-                        {tryCounter < 8
-                            ? gameText[tryCounter]
-                            : "You lose! Better start learning Assembly 😭"}
-                    </p>
+                    <ProgressBar failCondition={gameConditionState?.failCondition} />
                 </article>
             </section>
 
@@ -55,12 +51,12 @@ function App() {
                     keyboard={generateKeyboard()}
                     mysticWord={mysticWord}
                     keyState={keyState}
-                    tryCounter={tryCounter}
+                    failCondition={gameConditionState?.failCondition}
                     setMysticWord={setMysticWord}
                     setKeyState={setKeyState}
                 />
             </div>
-            {tryCounter >= 8 ? <button className="new-game">New Game</button> : null}
+            <button className="new-game">New Game</button>
         </main>
     );
 }

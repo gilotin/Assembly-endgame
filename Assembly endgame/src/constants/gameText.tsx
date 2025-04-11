@@ -8,4 +8,5 @@ export const gameText: Record<number, string> = {
     6: "Gone but not forgotten, Node.js",
     7: "The end of Python as we know it...",
     8: "Your watch has ended Ruby.",
+    9: "You lose! Better start learning Assembly 😭",
 };
