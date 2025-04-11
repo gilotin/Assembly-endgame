@@ -8,7 +8,7 @@ export interface KeyboardProps {
     keyboard: Key[];
     setMysticWord: React.Dispatch<React.SetStateAction<DataApi[]>>;
     setKeyState: React.Dispatch<React.SetStateAction<KeyState[]>>;
-    setTryCounter: React.Dispatch<React.SetStateAction<number>>;
+    tryCounter: number;
 }
 
 export interface DataApi {

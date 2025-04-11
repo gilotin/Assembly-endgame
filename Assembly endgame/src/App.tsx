@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import Keyboard from "./components/Keyboard";
 import generateKeyboard from "./utils/generateKeyboard";
-import MysticWord from "./components/MysticWord";
+import VisualizeWord from "./components/VisualizeWord";
 import { DataApi, KeyState } from "./types/types";
 import createStructuredData from "./utils/createStructureData";
 import checkNumberOfTries from "./utils/checkNumberOfTries";
+import { gameText } from "./constants/gameText";
+import GameAttempt from "./components/GameAttempt";
 
 function App() {
     const [mysticWord, setMysticWord] = useState<DataApi[]>([]);
@@ -34,24 +36,18 @@ function App() {
                     Guess the word inder 8 attempts to keep the programming world safe from Assembly
                 </p>
                 <article className="game__progress">
-                    <p className="progress__score">"Farewell HTML & CSS"</p>
+                    <p className="progress__score">
+                        {tryCounter < 8
+                            ? gameText[tryCounter]
+                            : "You lose! Better start learning Assembly 😭"}
+                    </p>
                 </article>
             </section>
 
-            <div className="game__attempt">
-                <div className="attempts html">HTML</div>
-                <div className="attempts css">CSS</div>
-                <div className="attempts javaScript">JavaScript</div>
-                <div className="attempts react">React</div>
-                <div className="attempts typeScript">TypeScript</div>
-                <div className="attempts nodeJs">Node.js</div>
-                <div className="attempts python">Python</div>
-                <div className="attempts ruby">Ruby</div>
-                <div className="attempts assembly">Assembly</div>
-            </div>
+            <GameAttempt />
 
             <div className="game__board">
-                <MysticWord mysticWord={mysticWord} />
+                <VisualizeWord mysticWord={mysticWord} />
             </div>
 
             <div className="game__keyboard">
@@ -59,12 +55,12 @@ function App() {
                     keyboard={generateKeyboard()}
                     mysticWord={mysticWord}
                     keyState={keyState}
-                    setTryCounter={setTryCounter}
+                    tryCounter={tryCounter}
                     setMysticWord={setMysticWord}
                     setKeyState={setKeyState}
                 />
             </div>
-            {tryCounter >= 6 ? <button className="new-game">New Game</button> : null}
+            {tryCounter >= 8 ? <button className="new-game">New Game</button> : null}
         </main>
     );
 }

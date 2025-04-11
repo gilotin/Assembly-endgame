@@ -60,6 +60,15 @@ body {
   background: var(--mustard);
 }
 
+/* .skull {
+  position: absolute;
+  padding: .6rem .8rem;
+  border-radius: .4rem;
+  background: var(--dark-grey);
+  opacity: 70%;
+} */
+
+
 /* Game Board */
 
 .game__board {

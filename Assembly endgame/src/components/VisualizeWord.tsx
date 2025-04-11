@@ -1,6 +1,6 @@
 import { MysticWordProps } from "../types/types";
 
-function mysticWord({ mysticWord: wordData }: MysticWordProps) {
+function GenerateWord({ mysticWord: wordData }: MysticWordProps) {
     return (
         <>
             {wordData.map((item, index) => (
@@ -12,4 +12,4 @@ function mysticWord({ mysticWord: wordData }: MysticWordProps) {
     );
 }
 
-export default mysticWord;
+export default GenerateWord;

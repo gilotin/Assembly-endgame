@@ -4,12 +4,17 @@ function Keyboard({
     keyboard,
     mysticWord,
     keyState,
+    tryCounter,
     setMysticWord,
-    setTryCounter,
     setKeyState,
 }: PROPS) {
     function onClickKey(e: React.MouseEvent<HTMLElement>) {
         const pressedKey = e.currentTarget.id;
+
+        if (tryCounter === 8) {
+            return;
+        }
+        console.log(tryCounter);
 
         if (keyState?.some((key) => key.id === pressedKey)) return;
 
