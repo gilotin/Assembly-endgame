@@ -13,6 +13,8 @@ body {
   justify-content: center;
 }
 
+
+
 .game__assembly {
   align-content: center;
   border: 1px solid white;
@@ -62,6 +64,42 @@ body {
   padding: .6rem .8rem;
   border-radius: .4rem;
   background: var(--mustard);
+}
+
+.html {
+  background-color: var(--mustard);
+}
+
+.css {
+  background-color: rgb(53, 53, 208);
+}
+
+.javascript {
+  background-color: rgb(122, 122, 59);
+}
+
+.react {
+  background-color: var(--light-blue);
+}
+
+.typescript {
+  background-color: rgb(18, 18, 159);
+}
+
+.nodejs {
+  background-color: green;
+}
+
+.python {
+  background-color: rgb(116, 61, 61);
+}
+
+.ruby {
+  background-color: red;
+}
+
+.assembly {
+  background-color: #5a6e55;
 }
 
 /* .skull {

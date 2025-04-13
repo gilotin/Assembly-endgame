@@ -35,11 +35,10 @@ function App() {
                 <p className="game__description">
                     Guess the word inder 8 attempts to keep the programming world safe from Assembly
                 </p>
-
-                <ProgressBar gameCondition={gameConditionState} />
             </section>
+            <ProgressBar gameCondition={gameConditionState} />
 
-            <GameAttempt />
+            <GameAttempt gameCondition={gameConditionState} />
 
             <div className="game__board">
                 <VisualizeWord mysticWord={mysticWord} />
