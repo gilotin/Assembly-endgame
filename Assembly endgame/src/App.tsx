@@ -15,14 +15,14 @@ function App() {
     const [gameConditionState, setGameConditionState] = useState<GameCondition>({});
 
     useEffect(() => {
-        fetchNewWord();
+        fetchWord();
     }, []);
 
     useEffect(() => {
         setGameConditionState(checkGameCondition(keyState, mysticWord));
     }, [keyState]);
 
-    function fetchNewWord() {
+    function fetchWord() {
         fetch("https://random-word-api.vercel.app/api?words=1&length=6&type=uppercase")
             .then((response) => response.json())
             .then((data: string[]) => {
@@ -36,7 +36,7 @@ function App() {
         setMysticWord([]);
         setKeyState([]);
         setGameConditionState({});
-        fetchNewWord();
+        fetchWord();
     }
 
     return (
