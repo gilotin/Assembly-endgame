@@ -14,7 +14,17 @@ function App() {
     const [keyState, setKeyState] = useState<KeyState[]>([]);
     const [gameConditionState, setGameConditionState] = useState<GameCondition>({});
 
+    console.log(mysticWord);
+
     useEffect(() => {
+        fetchNewWord();
+    }, []);
+
+    useEffect(() => {
+        setGameConditionState(checkGameCondition(keyState, mysticWord));
+    }, [keyState]);
+
+    function fetchNewWord() {
         fetch("https://random-word-api.vercel.app/api?words=1&length=6&type=uppercase")
             .then((response) => response.json())
             .then((data: string[]) => {
@@ -22,11 +32,14 @@ function App() {
                 const structuredData = createStructuredData(word);
                 setMysticWord(structuredData);
             });
-    }, []);
+    }
 
-    useEffect(() => {
-        setGameConditionState(checkGameCondition(keyState, mysticWord));
-    }, [keyState]);
+    function resetState() {
+        setMysticWord([]);
+        setKeyState([]);
+        setGameConditionState({});
+        fetchNewWord();
+    }
 
     return (
         <main className="game__assembly">
@@ -54,7 +67,11 @@ function App() {
                     setKeyState={setKeyState}
                 />
             </div>
-            <button className="new-game">New Game</button>
+            {gameConditionState.failCondition === 8 || gameConditionState.winCondition ? (
+                <button onClick={resetState} className="new-game">
+                    New Game
+                </button>
+            ) : null}
         </main>
     );
 }
