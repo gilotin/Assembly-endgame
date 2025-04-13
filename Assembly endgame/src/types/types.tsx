@@ -27,8 +27,8 @@ export interface KeyState {
 }
 
 export interface GameCondition {
-    winCondition?: number;
-    failCondition?: number;
+    winCondition?: boolean;
+    failCondition?: number | undefined;
 }
 
 export type PROPS = KeyboardProps & MysticWordProps & GameCondition;

@@ -25,5 +25,3 @@ function GameAttempt() {
 }
 
 export default GameAttempt;
-
-// <span className="skull">💀</span>

@@ -25,7 +25,7 @@ function App() {
     }, []);
 
     useEffect(() => {
-        setGameConditionState(checkGameCondition(keyState));
+        setGameConditionState(checkGameCondition(keyState, mysticWord));
     }, [keyState]);
 
     return (
@@ -35,9 +35,8 @@ function App() {
                 <p className="game__description">
                     Guess the word inder 8 attempts to keep the programming world safe from Assembly
                 </p>
-                <article className="game__progress">
-                    <ProgressBar failCondition={gameConditionState?.failCondition} />
-                </article>
+
+                <ProgressBar gameCondition={gameConditionState} />
             </section>
 
             <GameAttempt />

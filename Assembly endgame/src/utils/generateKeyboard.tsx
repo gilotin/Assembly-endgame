@@ -1,8 +1,9 @@
 import { Key } from "../types/types";
 
 function generateKeyboard() {
-    const keyboard: Key[] = "abcdefghijklmnopqrstuvwxyz".split("").map((letter) => ({
-        id: letter.toLocaleUpperCase(), // To ensure the ID matches everywhere, because ID is the letter -  for practical use.
+    const keyboard: Key[] = "QWERTYUIOPASDFGHJKLZXCVBNM".split("").map((letter) => ({
+        // To ensure the ID matches everywhere, because ID is the letter -  for practical use.
+        id: letter.toLocaleUpperCase(),
         className: "keyboard__letter",
         key: letter,
     }));

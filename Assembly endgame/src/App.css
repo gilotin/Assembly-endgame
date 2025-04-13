@@ -42,6 +42,10 @@ body {
   border: 1px dashed var(--dark-grey);
 }
 
+.score__win {
+  background-color: var(--success);
+}
+
 .game__attempt {
   font-size: .8rem;
   font-weight: 600;
