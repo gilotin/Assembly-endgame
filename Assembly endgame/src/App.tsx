@@ -14,8 +14,6 @@ function App() {
     const [keyState, setKeyState] = useState<KeyState[]>([]);
     const [gameConditionState, setGameConditionState] = useState<GameCondition>({});
 
-    console.log(mysticWord);
-
     useEffect(() => {
         fetchNewWord();
     }, []);
